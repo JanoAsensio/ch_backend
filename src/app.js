@@ -4,8 +4,6 @@ import __dirname from './utils.js';
 
 const app = express()
 
-const randomInteger = Math.floor(Math.random() * 5);
-
 let users = [{
     name: 'Jano',
     last_name: 'Asensio',
@@ -39,6 +37,8 @@ let users = [{
 
 }]
 
+const indice = Math.floor(Math.random() * users.length);
+
 // app.get(`/${randomInteger}`, (req, res)=>{
 //     let pos = req.params
 // })
@@ -50,9 +50,9 @@ app.set('view engine', 'handlebars')
 app.use(express.static(__dirname + '/public'))
 
 app.get('/', (req, res)=>{
-    res.status(200).json(users[randomInteger])
+    // res.status(200).json(users[randomInteger])
 
-    res.render('index', users)
+    res.render('index', users[indice])
 })
 
 const server = app.listen(8080, ()=> console.log('Server running in port 8080'))
