@@ -1,5 +1,16 @@
 <div>
-    <h1>Hola {{name}} {{last_name}}!</h1>
-    <p>Tu edad es: {{age}}</p>
-    <p>Tu numero de telefono es: {{phone}}, y tu email: {{email}}</p>
+    <h1>Hola {{user.name}} {{user.last_name}}!</h1>
+    <p>Tu edad es: {{user.age}}</p>
+    <p>Tu numero de telefono es: {{user.phone}}, y tu email: {{user.email}}</p>
+    {{#if isAdmin}}
+        {{#each food}}
+            <div>
+                <p>Comida: {{this.name}}, Precio: {{this.price}}</p>
+            </div>
+        {{/each}}
+    {{else}}
+        <p>No tienes permisos para ver la lista de alimentos</p>
+    {{/if}}
 </div>
+
+<script src="/js/index.js"></script>
